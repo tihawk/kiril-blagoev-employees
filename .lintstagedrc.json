@@ -1,0 +1,6 @@
+{
+  "*.{js,md,css,jsx,ts,tsx}": [
+    "prettier --trailing-comma es5 --tab-width 2 --bracket-spacing --no-semi --single-quote --write"
+  ],
+  "*.{js,css,md}": "prettier --write"
+}
