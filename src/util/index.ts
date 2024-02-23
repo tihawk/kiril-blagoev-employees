@@ -1,3 +1,4 @@
+import moment from 'moment'
 import {
   EmployeePairI,
   EmployeePairsObjectI,
@@ -14,9 +15,11 @@ export function calculateCommonProjectTime(
   // grouping of employees by project
   const groupedByProjectID = _data.reduce(
     (acc: GroupedByProjectIDI, { EmpID, ProjectID, DateFrom, DateTo }) => {
-      const startDate = new Date(DateFrom)
+      const startDate = moment(DateFrom).toDate()
       const endDate =
-        DateTo.toLowerCase().trim() !== 'null' ? new Date(DateTo) : new Date()
+        DateTo.toLowerCase().trim() !== 'null'
+          ? moment(DateTo).toDate()
+          : new Date()
       const value = { EmpID, startDate, endDate }
       return {
         ...acc,
